@@ -1,33 +1,16 @@
 import Image from 'next/image';
-import styles from './page.module.css';
-import { useEntries } from '@/hooks/useEntries';
-import Section from '@/components/Section/Section';
-import { IEntry } from '@/components/Section/Section.d';
-import Link from 'next/link';
-import { useCosmic } from '@/hooks/useCosmic';
 
-export default async function Home() {
-  const { getObject } = useCosmic();
-
-  const heroSection = await getObject('hero-section');
-
-  const title = heroSection.objects[0].title;
-
+import styles from '../page.module.css';
+import GoBack from '@/components/navigation/GoBack';
+export default async function About() {
   return (
     <main className={styles.main}>
       <div className={styles.description}>
         <p>
-          <code className={styles.code}>{title}</code>
-        </p>
-        <p>
-          <Link href={'/about'}>
-            <code className={styles.code}>{'About'}</code>
-          </Link>
-        </p>
-        <p>
-          <Link href={'/blog'}>
-            <code className={styles.code}>{'Blog'}</code>
-          </Link>
+          Get started by editing&nbsp;
+          <code className={styles.code}>
+            <GoBack />
+          </code>
         </p>
         <div>
           <a
