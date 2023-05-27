@@ -31,5 +31,17 @@ export function useCosmic() {
 
     return data;
   }
-  return { getObject, getSingleEntry };
+
+  async function getPage(name: string) {
+    const bucket = await getBucket();
+    const data = await bucket.objects
+      .find({
+        slug: name, // Object slug
+        type: 'pages', // Object Type slug
+      })
+      .props('metadata');
+
+    return data.objects[0].metadata;
+  }
+  return { getObject, getSingleEntry, getPage };
 }

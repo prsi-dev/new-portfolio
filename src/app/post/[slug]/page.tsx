@@ -9,6 +9,8 @@ type Params = { params: { slug: string } };
 export default async function Page({ params }: Params) {
   const { getSingleEntry } = useCosmic();
 
+
+
   const shapeEntry = async (params: any, objectType: string) => {
     const entryData = await getSingleEntry(params?.slug, objectType);
     const shapedEntry = entryData.objects.map((post: any) => {
